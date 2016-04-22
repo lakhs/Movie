@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.SingleMovieActivity">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            android:id="@+id/appBar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" >
+                <ImageView
+                    android:paddingRight="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/icon"
+                    android:onClick="onClickBack"/>
+
+
+
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+        <ImageView
+            android:layout_below="@+id/appBar"
+            android:layout_width="175dp"
+            android:layout_height="250dp"
+            android:id="@+id/iv_movie"
+            android:src="@drawable/pic8"
+            android:layout_alignParentLeft="true"
+            android:padding="2dp"
+            />
+        <TextView
+            android:layout_below="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="title : mad max: fury road "
+            android:id="@+id/tv_title"
+            android:textColor="#212121"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="normal|italic"
+            android:textSize="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/iv_movie" />
+        <TextView
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="normal|italic"
+            android:textSize="17dp"
+            android:layout_below="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Date : 2016-02-09"
+            android:layout_toRightOf="@+id/iv_movie"
+            android:id="@+id/tv_year"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:textColor="#212121"
+            />
+
+        <RatingBar
+            style = "?android:attr/ratingBarStyleIndicator"
+            android:layout_below="@+id/tv_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            android:layout_toRightOf="@+id/iv_movie"
+            android:layout_marginTop="35dp"
+            android:numStars="5"
+            android:rating="1"
+            android:stepSize="0.1" />
+         <Button
+             android:fontFamily="sans-serif-medium"
+             android:textStyle="normal|italic"
+             android:textSize="17dp"
+            android:textColor="#212121"
+            android:layout_toRightOf="@+id/iv_movie"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/ratingBar"
+            android:id="@+id/b_delete"
+             android:background="#4CAF50"
+            android:layout_marginTop="38dp"
+            android:text=""
+            android:onClick="deleteFavorite"
+            />
+
+        <TextView
+            android:fontFamily="sans-serif-thin"
+            android:textStyle="normal|bold|italic"
+            android:textSize="13dp"
+            android:layout_below="@+id/iv_movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Overview : After the cataclysmic events in New York with The Avengers, Steve Rogers, aka Captain America is living quietly in Washington, D.C. and trying to adjust to the modern world. But when a S.H.I.E.L.D. colleague comes under attack, Steve becomes embroiled in a web of intrigue that threatens to put the world at risk. Joining forces wi"
+            android:id="@+id/tv_desc"
+            android:textColor="#212121"
+            android:layout_marginLeft="7dp"
+            android:padding="4dp"/>
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/fab"
+            android:layout_below="@id/tv_desc"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:padding="10dp"
+            android:layout_marginLeft="350dp"
+            android:clickable="true"
+            android:src="@drawable/fb"
+            app:layout_anchorGravity="bottom"
+            android:background="#659ec9"
+            android:elevation="8dp"
+            android:contextClickable="true"
+            />
+
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
