@@ -36,6 +36,7 @@ public class SingleMovieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_single_movie);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         sql=new MovieSQLiteOpenHelper(this);
         title = (TextView) findViewById(R.id.tv_title);
         year = (TextView) findViewById(R.id.tv_year);
@@ -43,6 +44,7 @@ public class SingleMovieActivity extends AppCompatActivity {
         desc = (TextView) findViewById(R.id.tv_desc);
         rateBar= (RatingBar) findViewById(R.id.ratingBar);
         imageView = (ImageView) findViewById(R.id.iv_movie);
+
         mTitle  =  getIntent().getStringExtra("title");
         mYear  =  getIntent().getStringExtra("year");
         mRate  =  getIntent().getStringExtra("rate");
@@ -50,15 +52,18 @@ public class SingleMovieActivity extends AppCompatActivity {
         mId  =  getIntent().getStringExtra("id");
         float f = (Float.parseFloat(getIntent().getStringExtra("rate")));
         rateBar.setRating((float) (f/2.0));
+
+        desc.setText("Description: " +mDesc);
         title.setText("Title : " + mTitle);
         year.setText("Date : " + mYear);
-        //rate.setText("IMDB Rate " + mRate);
+
         if(fav==0){
             favourite.setText("Add");
-        }else{
+        }
+        else{
             favourite.setText("remove");
         }
-        desc.setText("Description: " +mDesc);
+
         s = getIntent().getStringExtra("rsc");
         id = Integer.parseInt(mId);
         Picasso.with(this)
@@ -85,7 +90,7 @@ public class SingleMovieActivity extends AppCompatActivity {
         }else {
             boolean b = sql.insertData(id, mTitle, mYear, mRate, mDesc, s);
             if (b == true)
-                Toast.makeText(this, "Successfully Edited", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Successfully Added", Toast.LENGTH_LONG).show();
             favourite.setText("remove");
             fav=0;
             favourite.setBackgroundColor(getColor(R.color.remove));
@@ -98,6 +103,7 @@ public class SingleMovieActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 

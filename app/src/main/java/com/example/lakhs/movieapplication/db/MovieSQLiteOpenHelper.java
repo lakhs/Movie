@@ -21,24 +21,24 @@ public class MovieSQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String DBNAME= "movie";
     private static final String IMAGE= "image";
     private static final String FAVMOVIE= "favmovie";
-    // SingleMovieContext c=new SingleMovieContext();
+
     public MovieSQLiteOpenHelper(Context context) {
         super(context, DBNAME, null, 1);
-
     }
 
     @Override
         public void onCreate(SQLiteDatabase db) {
-
-        db.execSQL("create table " + FAVMOVIE + " (id INTEGER PRIMARY key AUTOINCREMENT, title TEXT, year TEXT, rate TEXT, desc TEXT, image TEXT );");
+        db.execSQL("create table " + FAVMOVIE + " " +
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "title TEXT, year TEXT, rate TEXT, desc TEXT, image TEXT );");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS  "+FAVMOVIE);
         onCreate(db);
-
     }
+
     public boolean insertData (int id, String title, String year,String rate, String desc,String image){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -49,17 +49,21 @@ public class MovieSQLiteOpenHelper extends SQLiteOpenHelper {
         contentValues.put(ID, id);
         contentValues.put(IMAGE, image);
         long b = db.insert(FAVMOVIE,null,contentValues);
+
         if (b==-1)
             return false;
         else
             return true;
     }
+
     public Integer deleteFav(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         return  db.delete(FAVMOVIE, "id = ? ", new String[] {id});
 
     }
+
     public  int i;
+
     public String[][]  getFavmovie(){
         SQLiteDatabase db = this.getWritableDatabase();
             String[][] array = new String[6][20];
@@ -80,12 +84,7 @@ public class MovieSQLiteOpenHelper extends SQLiteOpenHelper {
           }
             cursor.close();
             db.close();
-            System.out.println("ასდსდასდასდასდასდასდას: " +array[1][0]);
+
             return array;
-
-
         }
-
-
-
 }

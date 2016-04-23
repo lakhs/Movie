@@ -26,31 +26,23 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         this.data = data;
     }
 
-
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.movie_main, parent, false);
         ViewHolder holder = new ViewHolder(view,data,context);
-        return holder;
 
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Movie current = data.get(position);
-        //holder.title.setText(current.getTitle());
-        //holder.des.setText(current.getDesc());
-        //holder.rate.setText(current.getRate());
-        //holder.year.setText(current.getYear());
-        //Picasso.with(holder.imageView.getContext()).load().into(holder.imageView);
-        Picasso.with(context)
+                Picasso.with(context)
                 .load(current.getRsc())
                 .resize(420, 560)
                 .centerCrop()
                 .into(holder.imageView);
     }
-
 
     @Override
     public int getItemCount() {
@@ -75,15 +67,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             int position = getAdapterPosition();
             Movie movie = this.data.get(position);
             Intent intent = new Intent(this.context, SingleMovieActivity.class);
+
             intent.putExtra("year", movie.getYear());
             intent.putExtra("title", movie.getTitle());
             intent.putExtra("rate", movie.getRate());
             intent.putExtra("desc",movie.getDesc());
             intent.putExtra("rsc", movie.getRsc());
             intent.putExtra("id",movie.getId());
+
             this.context.startActivity(intent);
-
         }
-
     }
 }

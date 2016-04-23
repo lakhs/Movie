@@ -26,11 +26,10 @@ public class FavoriteActivity extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     public String[][] array = new String[6][20];
     public ArrayList<FavMovie> arrayList=new ArrayList<FavMovie>();
-    MovieSQLiteOpenHelper sql;
+    private MovieSQLiteOpenHelper sql;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -39,8 +38,8 @@ public class FavoriteActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.rv_favmovie);
         sql = new MovieSQLiteOpenHelper(this);
         array = sql.getFavmovie();
-
         int j = sql.i;
+
         for (int i = 0; i < j; i++) {
             FavMovie y = new FavMovie();
             y.setId(array[0][i]);
@@ -58,7 +57,6 @@ public class FavoriteActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager( new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
-
     }
 
     public void onClickBack(View v) {
@@ -69,6 +67,7 @@ public class FavoriteActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 
@@ -82,11 +81,13 @@ public class FavoriteActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+
         }
         if (id == R.id.action_top10) {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

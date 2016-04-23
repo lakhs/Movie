@@ -6,8 +6,13 @@ import android.graphics.Bitmap;
  * Created by lakhs on 3/14/2016.
  */
 public class Movie {
-    String title,year,rate,desc,rsc,id;
-    Bitmap bitmap;
+    private String title;
+    private String year;
+    private String rate;
+    private String desc;
+    private String rsc;
+    private String id;
+    private Bitmap bitmap;
 
     public void setId(String id) {
         this.id = id;

@@ -33,18 +33,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.fav_movie, parent, false);
         ViewHolder holder = new ViewHolder(view,arrayList,context);
+
         return holder;
-
     }
-
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         FavMovie current = arrayList.get(position);
-        //holder.title.setText(current.getTitle());
-        //holder.des.setText(current.getDesc());
-        //holder.rate.setText(current.getRate());
-        //holder.year.setText(current.getYear());
-        //Picasso.with(holder.imageView.getContext()).load().into(holder.imageView);
         Picasso.with(context)
                 .load(current.getRsc())
                 .resize(420, 560)
@@ -52,14 +46,13 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                 .into(holder.imageView);
     }
 
-
     @Override
     public int getItemCount() {
         return arrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView imageView,title,des,year;
+        ImageView imageView;
         ArrayList<FavMovie> arrayList = new ArrayList<FavMovie>();
         Context context;
 
@@ -76,15 +69,15 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             int position = getAdapterPosition();
             FavMovie movie = this.arrayList.get(position);
             Intent intent = new Intent(this.context, SingleMovieActivity.class);
+
             intent.putExtra("year", movie.getYear());
             intent.putExtra("title", movie.getTitle());
             intent.putExtra("rate", movie.getRate());
             intent.putExtra("desc",movie.getDesc());
             intent.putExtra("rsc", movie.getRsc());
             intent.putExtra("id",movie.getId());
+
             this.context.startActivity(intent);
-
         }
-
     }
 }
